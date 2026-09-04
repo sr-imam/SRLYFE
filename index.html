@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SRLYFE - Smart Tools for Everyday Life">
+  <title>SRLYFE — Smart Tools for Everyday Life</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f8fa;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 18px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 20px 45px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #6b7280;
+      font-size: 18px;
+      margin-bottom: 28px;
+    }
+
+    .search {
+      width: 100%;
+      max-width: 600px;
+      padding: 16px 18px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+      background: white;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 25px 20px 60px;
+    }
+
+    .section h2 {
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      margin-bottom: 7px;
+    }
+
+    .card p {
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: white;
+      border-top: 1px solid #e5e7eb;
+      color: #6b7280;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: 50px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="nav">
+      <div class="logo">SRLYFE</div>
+      <div>Smart Tools</div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <h1>Smart Tools for Everyday Life</h1>
+      <p>Simple, useful and fast tools for everyone.</p>
+
+      <input
+        class="search"
+        type="search"
+        placeholder="Search a tool..."
+        id="searchBox"
+      >
+    </section>
+
+    <section class="section">
+      <h2>Popular Tools</h2>
+
+      <div class="tools" id="toolList">
+
+        <div class="card">
+          <h3>Age Calculator</h3>
+          <p>Calculate your exact age easily.</p>
+        </div>
+
+        <div class="card">
+          <h3>Percentage Calculator</h3>
+          <p>Calculate percentages quickly.</p>
+        </div>
+
+        <div class="card">
+          <h3>Date Calculator</h3>
+          <p>Calculate dates and days between dates.</p>
+        </div>
+
+        <div class="card">
+          <h3>Unit Converter</h3>
+          <p>Convert common units quickly and easily.</p>
+        </div>
+
+        <div class="card">
+          <h3>CGPA Calculator</h3>
+          <p>Calculate your CGPA and percentage.</p>
+        </div>
+
+        <div class="card">
+          <h3>QR Code Generator</h3>
+          <p>Create QR codes for useful information.</p>
+        </div>
+
+        <div class="card">
+          <h3>Password Strength Checker</h3>
+          <p>Learn how strong a password is.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 SRLYFE. Smart Tools for Everyday Life.</p>
+  </footer>
+
+  <script>
+    const searchBox = document.getElementById("searchBox");
+    const cards = document.querySelectorAll(".card");
+
+    searchBox.addEventListener("input", function () {
+      const searchText = this.value.toLowerCase();
+
+      cards.forEach(function (card) {
+        const text = card.innerText.toLowerCase();
+
+        if (text.includes(searchText)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  </script>
+
+</body>
+  </html>
