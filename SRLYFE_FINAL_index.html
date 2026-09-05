@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SRLYFE - Smart Tools for Everyday Life. Free, simple and useful online tools.">
+<meta name="theme-color" content="#111827">
+<title>SRLYFE — Smart Tools for Everyday Life</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f6f8fb;--card:#fff;--text:#111827;--muted:#64748b;--accent:#2563eb;--accent2:#1d4ed8;--border:#e2e8f0;--danger:#dc2626;--success:#15803d}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+header{background:#111827;color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 12px #0002}
+.nav{max-width:1100px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:25px;font-weight:800;letter-spacing:.5px}.logo span{font-weight:400;color:#93c5fd}
+.tag{font-size:12px;color:#cbd5e1}
+.hero{max-width:1100px;margin:auto;padding:48px 20px 28px;text-align:center}
+.hero h1{font-size:clamp(30px,7vw,52px);line-height:1.1;margin-bottom:12px}
+.hero p{color:var(--muted);font-size:16px;margin-bottom:24px}
+.search{width:min(650px,100%);padding:15px 18px;border:1px solid var(--border);border-radius:14px;font-size:16px;outline:none;background:#fff;box-shadow:0 4px 20px #0000000a}
+.search:focus{border-color:var(--accent)}
+main{max-width:1100px;margin:auto;padding:0 20px 50px}
+.section-title{font-size:22px;margin:24px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;cursor:pointer;transition:.2s;box-shadow:0 4px 15px #00000008}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 25px #00000012;border-color:#bfdbfe}
+.icon{font-size:30px;margin-bottom:10px}.card h3{font-size:18px;margin-bottom:5px}.card p{font-size:13px;color:var(--muted)}
+.hidden{display:none!important}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:28px 20px;border-top:1px solid var(--border)}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
+.modal.show{display:flex}.box{background:#fff;width:min(560px,100%);max-height:90vh;overflow:auto;border-radius:18px;padding:22px;position:relative}
+.close{position:absolute;right:15px;top:10px;border:0;background:#f1f5f9;border-radius:50%;width:34px;height:34px;font-size:22px;cursor:pointer}
+.box h2{padding-right:40px;margin-bottom:6px}.sub{color:var(--muted);font-size:13px;margin-bottom:18px}
+.form{display:grid;gap:11px}.form label{font-size:13px;font-weight:700}.form input,.form select{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;font-size:15px;background:#fff}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button.primary{border:0;background:var(--accent);color:#fff;padding:12px 16px;border-radius:10px;font-weight:700;cursor:pointer}
+button.primary:hover{background:var(--accent2)}
+.result{margin-top:15px;padding:14px;border-radius:10px;background:#eff6ff;border:1px solid #bfdbfe;white-space:pre-wrap}
+.error{color:var(--danger)}.good{color:var(--success)}
+.subject{display:grid;grid-template-columns:1fr 100px 40px;gap:8px;margin-bottom:8px}
+.subject input{min-width:0;padding:10px;border:1px solid var(--border);border-radius:8px}
+.smallbtn{border:1px solid var(--border);background:#fff;border-radius:8px;cursor:pointer}
+.qr{max-width:220px;width:100%;display:block;margin:15px auto;border:8px solid #fff;box-shadow:0 2px 12px #0002}
+.strength{height:10px;background:#e2e8f0;border-radius:20px;overflow:hidden;margin:10px 0}.strength div{height:100%;width:0;transition:.2s}
+@media(max-width:520px){.row{grid-template-columns:1fr}.nav{padding:13px 15px}.hero{padding-top:35px}main{padding:0 15px 40px}.grid{grid-template-columns:1fr 1fr}.card{padding:16px}.tag{display:none}}
+@media(max-width:350px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="logo">SR<span>LYFE</span></div><div class="tag">Smart Tools for Everyday Life</div></div></header>
+
+<section class="hero">
+<h1>Smart Tools for Everyday Life</h1>
+<p>Simple, useful and fast tools for everyone.</p>
+<input id="search" class="search" placeholder="Search tools..." autocomplete="off">
+</section>
+
+<main>
+<h2 class="section-title">Popular Tools</h2>
+<div class="grid" id="tools">
+<div class="card" data-name="age calculator" onclick="openTool('age')"><div class="icon">🎂</div><h3>Age Calculator</h3><p>Calculate your exact age.</p></div>
+<div class="card" data-name="percentage calculator" onclick="openTool('percentage')"><div class="icon">📊</div><h3>Percentage Calculator</h3><p>Calculate percentages quickly.</p></div>
+<div class="card" data-name="date calculator" onclick="openTool('date')"><div class="icon">📅</div><h3>Date Calculator</h3><p>Add or subtract days from a date.</p></div>
+<div class="card" data-name="unit converter" onclick="openTool('unit')"><div class="icon">🔄</div><h3>Unit Converter</h3><p>Convert common units.</p></div>
+<div class="card" data-name="cgpa calculator" onclick="openTool('cgpa')"><div class="icon">🎓</div><h3>CGPA Calculator</h3><p>Calculate CGPA from grades and credits.</p></div>
+<div class="card" data-name="qr code generator" onclick="openTool('qr')"><div class="icon">🔳</div><h3>QR Code Generator</h3><p>Create a QR code from text or a link.</p></div>
+<div class="card" data-name="password strength checker security" onclick="openTool('password')"><div class="icon">🔐</div><h3>Password Strength</h3><p>Check password strength locally.</p></div>
+</div>
+</main>
+
+<footer>© 2026 SRLYFE. Smart Tools for Everyday Life.</footer>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeTool()">
+<div class="box">
+<button class="close" onclick="closeTool()">×</button>
+<div id="content"></div>
+</div></div>
+
+<script>
+const modal=document.getElementById('modal'),content=document.getElementById('content');
+function openTool(type){
+ let html='';
+ if(type==='age') html=`<h2>🎂 Age Calculator</h2><p class="sub">Enter your date of birth.</p>
+ <div class="form"><label>Date of Birth</label><input type="date" id="dob"><label>Calculate as of</label><input type="date" id="ageTo"><button class="primary" onclick="calcAge()">Calculate Age</button></div><div id="out" class="result hidden"></div>`;
+ if(type==='percentage') html=`<h2>📊 Percentage Calculator</h2><p class="sub">Find a percentage of a number.</p>
+ <div class="form"><label>Percentage (%)</label><input type="number" id="pct" placeholder="e.g. 20"><label>Number</label><input type="number" id="num" placeholder="e.g. 500"><button class="primary" onclick="calcPct()">Calculate</button></div><div id="out" class="result hidden"></div>`;
+ if(type==='date') html=`<h2>📅 Date Calculator</h2><p class="sub">Add or subtract days from a date.</p>
+ <div class="form"><label>Start Date</label><input type="date" id="start"><label>Days (+ to add, − to subtract)</label><input type="number" id="days" placeholder="e.g. 30"><button class="primary" onclick="calcDate()">Calculate Date</button></div><div id="out" class="result hidden"></div>`;
+ if(type==='unit') html=`<h2>🔄 Unit Converter</h2><p class="sub">Convert length, weight or temperature.</p>
+ <div class="form"><label>Category</label><select id="cat" onchange="unitOptions()"><option value="length">Length</option><option value="weight">Weight</option><option value="temp">Temperature</option></select>
+ <div class="row"><div><label>From</label><select id="from"></select></div><div><label>To</label><select id="to"></select></div></div>
+ <label>Value</label><input type="number" id="val" placeholder="Enter value"><button class="primary" onclick="convertUnit()">Convert</button></div><div id="out" class="result hidden"></div>`;
+ if(type==='cgpa') html=`<h2>🎓 CGPA Calculator</h2><p class="sub">Enter grade points and credits for each subject.</p><div id="subjects"></div><button class="smallbtn" onclick="addSubject()">＋ Add Subject</button><br><br><button class="primary" onclick="calcCGPA()">Calculate CGPA</button><div id="out" class="result hidden"></div>`;
+ if(type==='qr') html=`<h2>🔳 QR Code Generator</h2><p class="sub">Enter text or a URL. An internet connection is needed to create the QR image.</p><div class="form"><textarea id="qrtext" rows="4" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;font-size:15px" placeholder="https://example.com"></textarea><button class="primary" onclick="makeQR()">Generate QR Code</button></div><div id="out" class="result hidden"></div>`;
+ if(type==='password') html=`<h2>🔐 Password Strength Checker</h2><p class="sub">Your password is checked in this browser and is not sent anywhere by this page.</p><div class="form"><input type="password" id="pass" placeholder="Enter a password" oninput="checkPass()"><div class="strength"><div id="bar"></div></div></div><div id="out" class="result">Start typing to check strength.</div>`;
+ content.innerHTML=html;modal.classList.add('show');
+ if(type==='date') document.getElementById('start').value=new Date().toISOString().slice(0,10);
+ if(type==='age') document.getElementById('ageTo').value=new Date().toISOString().slice(0,10);
+ if(type==='unit') unitOptions();
+ if(type==='cgpa'){addSubject();addSubject();addSubject();}
+}
+function closeTool(){modal.classList.remove('show')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTool()});
+document.getElementById('search').addEventListener('input',function(){
+ const q=this.value.toLowerCase().trim();
+ document.querySelectorAll('#tools .card').forEach(c=>c.classList.toggle('hidden',q&&!c.dataset.name.includes(q)));
+});
+function show(text,cls=''){const o=document.getElementById('out');o.className='result '+cls;o.classList.remove('hidden');o.textContent=text}
+function dateObj(s){const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)}
+function calcAge(){
+ const dob=document.getElementById('dob').value,to=document.getElementById('ageTo').value;
+ if(!dob||!to)return show('Please select both dates.','error');
+ let a=dateObj(dob),b=dateObj(to);if(b<a)return show('The end date cannot be before the birth date.','error');
+ let y=b.getFullYear()-a.getFullYear(),m=b.getMonth()-a.getMonth(),d=b.getDate()-a.getDate();
+ if(d<0){m--;d+=new Date(b.getFullYear(),b.getMonth(),0).getDate()}
+ if(m<0){y--;m+=12}
+ show(`Age: ${y} years, ${m} months, ${d} days.`);
+}
+function calcPct(){
+ const p=parseFloat(document.getElementById('pct').value),n=parseFloat(document.getElementById('num').value);
+ if(isNaN(p)||isNaN(n))return show('Please enter both numbers.','error');
+ show(`${p}% of ${n} = ${(p*n/100).toLocaleString(undefined,{maximumFractionDigits:10})}`);
+}
+function calcDate(){
+ const s=document.getElementById('start').value,d=Number(document.getElementById('days').value);
+ if(!s||!Number.isFinite(d))return show('Please enter a date and number of days.','error');
+ const x=dateObj(s);x.setDate(x.getDate()+d);
+ show(`Result: ${x.toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'})}`);
+}
+const units={length:{m:1,km:1000,cm:.01,mm:.001,ft:.3048,in:.0254,yd:.9144,mi:1609.344},weight:{kg:1,g:.001,mg:.000001,lb:.45359237,oz:.0283495231},temp:null};
+function unitOptions(){
+ const cat=document.getElementById('cat').value,f=document.getElementById('from'),t=document.getElementById('to');
+ let arr=cat==='length'?['m','km','cm','mm','ft','in','yd','mi']:cat==='weight'?['kg','g','mg','lb','oz']:['°C','°F','K'];
+ f.innerHTML=arr.map(x=>`<option>${x}</option>`).join('');t.innerHTML=arr.map(x=>`<option>${x}</option>`).join('');
+}
+function convertUnit(){
+ const cat=document.getElementById('cat').value,v=parseFloat(document.getElementById('val').value),f=document.getElementById('from').value,t=document.getElementById('to').value;
+ if(isNaN(v))return show('Please enter a value.','error');
+ let r;
+ if(cat==='temp'){let c=f==='°C'?v:f==='°F'?(v-32)*5/9:v-273.15;r=t==='°C'?c:t==='°F'?c*9/5+32:c+273.15}
+ else r=v*units[cat][f]/units[cat][t];
+ show(`${v} ${f} = ${Number(r.toFixed(10))} ${t}`);
+}
+let subCount=0;
+function addSubject(){
+ subCount++;const d=document.getElementById('subjects'),el=document.createElement('div');el.className='subject';el.innerHTML=`<input placeholder="Subject ${subCount}"><input type="number" min="0" max="10" step=".01" placeholder="Grade"><button class="smallbtn" onclick="this.parentElement.remove()">×</button>`;d.appendChild(el);
+}
+function calcCGPA(){
+ let sum=0,credits=0,valid=true;
+ document.querySelectorAll('#subjects .subject').forEach(r=>{const inputs=r.querySelectorAll('input'),g=parseFloat(inputs[1].value);if(!isNaN(g)){const c=1;sum+=g*c;credits+=c}});
+ if(!credits)return show('Enter at least one valid grade point.','error');
+ show(`CGPA: ${(sum/credits).toFixed(2)}\n(Weighted by 1 credit per subject in this simple calculator.)`);
+}
+function makeQR(){
+ const text=document.getElementById('qrtext').value.trim();if(!text)return show('Please enter text or a URL.','error');
+ const url='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data='+encodeURIComponent(text);
+ const o=document.getElementById('out');o.className='result';o.innerHTML=`<div style="text-align:center"><img class="qr" src="${url}" alt="Generated QR Code"><p>QR code generated.</p><p><a href="${url}" target="_blank" rel="noopener">Open QR image</a></p></div>`;
+}
+function checkPass(){
+ const p=document.getElementById('pass').value,o=document.getElementById('out'),bar=document.getElementById('bar');
+ let score=0;if(p.length>=8)score++;if(p.length>=12)score++;if(/[a-z]/.test(p)&&/[A-Z]/.test(p))score++;if(/\d/.test(p))score++;if(/[^A-Za-z0-9]/.test(p))score++;
+ const levels=['Very weak','Weak','Fair','Good','Strong','Very strong'];const widths=[5,20,40,60,80,100];
+ bar.style.width=widths[score]+'%';o.textContent=p?`Strength: ${levels[score]}\nLength: ${p.length} characters\nTip: use a long, unique password or passphrase.`:'Start typing to check strength.';
+}
+</script>
+</body>
+</html>
