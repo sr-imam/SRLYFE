@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SRLYFE — useful life tools, brain challenges and internet safety tools in one place.">
+<title>SRLYFE — Useful Things. Unexpected Fun.</title>
+<style>
+:root{--bg:#080b14;--card:#111726;--card2:#151d2f;--text:#f5f7ff;--muted:#aab3c7;--line:#263149;--accent:#7c5cff;--accent2:#19d3ae;--danger:#ff6b7a;--shadow:0 18px 50px rgba(0,0,0,.28)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 20% 0%,#1b1740 0,#080b14 35%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}.container{width:min(1120px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:20;background:rgba(8,11,20,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+.navin{height:68px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:23px;font-weight:900;letter-spacing:.5px}.logo span{color:var(--accent2)}
+.navlinks{display:flex;gap:22px;color:var(--muted);font-size:14px}.navlinks a:hover{color:#fff}
+.hero{padding:75px 0 45px;text-align:center}.badge{display:inline-block;padding:7px 12px;border:1px solid var(--line);border-radius:999px;color:#c9d1e5;background:rgba(255,255,255,.03);font-size:13px}
+h1{font-size:clamp(42px,9vw,82px);line-height:.98;margin:20px auto 18px;max-width:850px;letter-spacing:-3px}
+.gradient{background:linear-gradient(90deg,#fff,#9b8aff,#55e7c8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:650px;margin:auto;color:var(--muted);font-size:17px}.heroBtns{margin-top:28px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{border:0;border-radius:13px;padding:13px 18px;font-weight:800;cursor:pointer;color:white;background:var(--accent);box-shadow:0 8px 25px rgba(124,92,255,.25)}.btn.secondary{background:transparent;border:1px solid var(--line);box-shadow:none}.btn:hover{transform:translateY(-1px)}
+section{padding:35px 0 55px}.sectionTitle{font-size:28px;margin:0 0 7px}.sectionSub{color:var(--muted);margin:0 0 22px}
+.wow{background:linear-gradient(135deg,rgba(124,92,255,.2),rgba(25,211,174,.09));border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow);text-align:center}.wow h2{font-size:30px;margin:4px 0}.wowText{min-height:70px;display:grid;place-items:center;font-size:20px;font-weight:750}.wow small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:rgba(17,23,38,.86);border:1px solid var(--line);border-radius:18px;padding:20px;transition:.2s}.card:hover{transform:translateY(-3px);border-color:#465374}.icon{font-size:28px}.card h3{margin:10px 0 5px}.card p{color:var(--muted);font-size:14px;margin:0 0 15px}.card button{width:100%}
+.tool{display:none;margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}.tool.active{display:block}.tool h3{margin-top:0}.row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.input{width:100%;padding:12px;border-radius:11px;border:1px solid var(--line);background:#0b101c;color:#fff;outline:none}.input:focus{border-color:var(--accent)}label{display:block;color:var(--muted);font-size:13px;margin:0 0 6px}.result{margin-top:14px;padding:15px;border-radius:12px;background:var(--card2);border:1px solid var(--line);min-height:48px}.memoryBox{height:180px;border-radius:16px;background:#0b101c;border:1px solid var(--line);display:grid;place-items:center;font-size:50px;margin:15px 0}.choices{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}.choice{font-size:24px;padding:14px 18px;background:#0b101c;border:1px solid var(--line);border-radius:12px;color:#fff;cursor:pointer}.choice:hover{border-color:var(--accent)}
+.safety{border-left:4px solid var(--accent2)}.warning{color:#ffd36b}.safe{color:#5ee7bd}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px;text-align:center}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}}
+@media(max-width:520px){.hero{padding-top:55px}.grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}h1{letter-spacing:-2px}.wow{padding:22px}}
+
+/* SRLYFE V2 */
+:root{--glow:0 0 30px rgba(124,92,255,.22)}
+.theme-light{--bg:#f5f7fb;--card:#fff;--card2:#eef1f7;--text:#101522;--muted:#5f6b80;--line:#dbe1ec}
+body{transition:background .3s,color .3s}
+.top-actions{display:flex;align-items:center;gap:8px}.mini-btn{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);border-radius:10px;padding:8px 10px;cursor:pointer}
+.heroCard{position:relative;overflow:hidden}.heroCard:before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(124,92,255,.16);filter:blur(55px);top:-160px;left:-80px;pointer-events:none}
+.toolSearch{margin:0 0 18px;display:flex;gap:10px}.toolSearch input{flex:1}
+.grid .card{box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.hidden{display:none!important}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(30px);opacity:0;pointer-events:none;background:#151d2f;color:#fff;border:1px solid var(--line);padding:12px 16px;border-radius:12px;z-index:50;transition:.25s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.best{font-size:13px;color:#aab3c7;margin-top:8px}.scoreBig{font-size:34px;font-weight:900;margin:8px 0}
+.reaction{height:190px;border-radius:16px;border:1px solid var(--line);display:grid;place-items:center;background:#0b101c;color:#fff;font-size:22px;font-weight:800;cursor:pointer;margin:15px 0}
+.reaction.ready{background:#14223a}.reaction.go{background:#123c31}.reaction.wait{background:#3b2028}
+.pattern{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:330px;margin:15px auto}.tile{aspect-ratio:1;border:1px solid var(--line);border-radius:10px;background:#0b101c;cursor:pointer}.tile.on{box-shadow:inset 0 0 0 3px var(--accent);background:#272047}
+.egg{font-size:12px;color:var(--muted);margin-top:12px}
+</style>
+</head>
+<body>
+<nav><div class="container navin"><a class="logo" href="#">SR<span>LYFE</span></a><div class="navlinks"><a href="#wow">WOW</a><a href="#tools">Tools</a><a href="#safety">Safety</a></div>
+<div class="top-actions"><button class="mini-btn" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button></div></div></nav>
+
+<header class="hero container">
+<span class="badge">FREE • MOBILE FRIENDLY • MADE FOR EVERYDAY LIFE</span>
+<h1>Useful things.<br><span class="gradient">Unexpected fun.</span></h1>
+<p>Mini challenges, life calculators and practical internet-safety tools — all in one place.</p>
+<div class="heroBtns"><a class="btn" href="#wow">⚡ Surprise Me</a><a class="btn secondary" href="#tools">Explore Tools</a></div>
+</header>
+
+<main class="container">
+<section id="wow">
+<div class="wow heroCard">
+<small>DON'T OVERTHINK IT</small><h2>⚡ The WOW Button</h2>
+<div id="wowText" class="wowText">Tap the button. Something interesting will happen.</div>
+<button class="btn" onclick="wow()">SURPRISE ME 😈</button>
+</div>
+</section>
+
+<section id="tools">
+<h2 class="sectionTitle">🛠️ Everyday Tools</h2><p class="sectionSub">Simple tools that actually do something.</p>
+<div class="toolSearch"><input id="toolSearch" class="input" oninput="filterTools()" placeholder="🔎 Search tools..."></div>
+<div class="grid" id="toolGrid">
+<div class="card"><div class="icon">🧠</div><h3>Memory Challenge</h3><p>Remember the symbol and test yourself.</p><button class="btn" onclick="openTool('memory')">Play</button></div>
+<div class="card"><div class="icon">⏳</div><h3>Age Calculator</h3><p>Find your exact age in years, months and days.</p><button class="btn" onclick="openTool('age')">Calculate</button></div>
+<div class="card"><div class="icon">💰</div><h3>Savings Calculator</h3><p>See how regular saving can add up.</p><button class="btn" onclick="openTool('save')">Calculate</button></div>
+<div class="card"><div class="icon">🧮</div><h3>Percentage</h3><p>Calculate a percentage in seconds.</p><button class="btn" onclick="openTool('percent')">Calculate</button></div>
+<div class="card"><div class="icon">📅</div><h3>Date Difference</h3><p>Count the days between two dates.</p><button class="btn" onclick="openTool('date')">Calculate</button></div>
+<div class="card"><div class="icon">🎯</div><h3>60-Second Challenge</h3><p>Answer as many quick questions as you can.</p><button class="btn" onclick="openTool('challenge')">Start</button></div>
+<div class="card"><div class="icon">🔐</div><h3>Scam Awareness</h3><p>Check common warning signs in a message.</p><button class="btn" onclick="openTool('scam')">Check</button></div>
+<div class="card"><div class="icon">📊</div><h3>Life in Numbers</h3><p>Turn your age into days, weeks and months.</p><button class="btn" onclick="openTool('life')">Explore</button></div>
+<div class="card"><div class="icon">⚡</div><h3>Reaction Test</h3><p>How fast can you react?</p><button class="btn" onclick="openTool('reaction')">Test</button></div>
+<div class="card"><div class="icon">🔷</div><h3>Pattern Memory</h3><p>Remember a glowing pattern.</p><button class="btn" onclick="openTool('pattern')">Play</button></div>
+</div>
+
+<div id="memory" class="tool"><h3>🧠 Memory Challenge</h3><p id="memStatus">Press start. A symbol will appear briefly.</p><div id="memoryBox" class="memoryBox">?</div><button class="btn" onclick="startMemory()">Start</button><div id="memChoices" class="choices"></div></div>
+
+<div id="age" class="tool"><h3>⏳ Age Calculator</h3><div class="row"><div><label>Date of birth</label><input id="dob" class="input" type="date"></div></div><br><button class="btn" onclick="calcAge()">Calculate Age</button><div id="ageResult" class="result"></div></div>
+
+<div id="save" class="tool"><h3>💰 Savings Calculator</h3><div class="row"><div><label>Save per month (₹)</label><input id="monthly" class="input" type="number" min="0" placeholder="1000"></div><div><label>Number of months</label><input id="months" class="input" type="number" min="1" placeholder="12"></div></div><br><button class="btn" onclick="calcSave()">Calculate</button><div id="saveResult" class="result"></div></div>
+
+<div id="percent" class="tool"><h3>🧮 Percentage Calculator</h3><div class="row"><div><label>Percentage (%)</label><input id="pct" class="input" type="number" placeholder="20"></div><div><label>Number</label><input id="num" class="input" type="number" placeholder="500"></div></div><br><button class="btn" onclick="calcPercent()">Calculate</button><div id="pctResult" class="result"></div></div>
+
+<div id="date" class="tool"><h3>📅 Date Difference</h3><div class="row"><div><label>Start date</label><input id="date1" class="input" type="date"></div><div><label>End date</label><input id="date2" class="input" type="date"></div></div><br><button class="btn" onclick="dateDiff()">Calculate</button><div id="dateResult" class="result"></div></div>
+
+<div id="challenge" class="tool"><h3>🎯 60-Second Challenge</h3><p id="chText">Press start. You'll get 60 seconds of quick arithmetic questions.</p><div class="result" id="chQuestion">Ready?</div><div class="row"><input id="chAnswer" class="input" type="number" placeholder="Your answer"><button class="btn" onclick="challengeStart()" id="chBtn">Start</button></div><p id="chScore"></p></div>
+
+
+<div id="reaction" class="tool"><h3>⚡ Reaction Test</h3><p id="reactStatus">Press start, wait for GO, then tap the box as fast as possible.</p><div id="reactionBox" class="reaction ready" onclick="reactionTap()">START</div><div id="reactionResult" class="result">Your best score will be saved on this device.</div><div class="best" id="reactBest"></div></div>
+
+<div id="pattern" class="tool"><h3>🔷 Pattern Memory</h3><p id="patternStatus">Press start and remember the highlighted tiles.</p><div id="patternGrid" class="pattern"></div><button class="btn" onclick="startPattern()">Start</button><div id="patternResult" class="result"></div></div>
+
+<div id="scam" class="tool safety"><h3>🔐 Scam Awareness Checker</h3><p>Paste a message below. This demo looks for common warning signs; it does not prove whether a message is a scam.</p><textarea id="scamText" class="input" rows="6" placeholder="Example: You won a prize! Send money now..."></textarea><br><br><button class="btn" onclick="checkScam()">Check Warning Signs</button><div id="scamResult" class="result"></div></div>
+
+<div id="life" class="tool"><h3>📊 Life in Numbers</h3><div><label>Date of birth</label><input id="lifeDob" class="input" type="date"></div><br><button class="btn" onclick="lifeNumbers()">Show My Numbers</button><div id="lifeResult" class="result"></div></div>
+</section>
+
+<section id="safety">
+<h2 class="sectionTitle">🔐 Stay Smarter Online</h2><p class="sectionSub">A few simple habits can prevent many common problems.</p>
+<div class="grid">
+<div class="card"><div class="icon">🔗</div><h3>Pause Before Clicking</h3><p>Check the sender, domain and context before opening an unexpected link.</p></div>
+<div class="card"><div class="icon">🔑</div><h3>Protect Passwords</h3><p>Use unique, long passwords and enable multi-factor authentication where available.</p></div>
+<div class="card"><div class="icon">💳</div><h3>Never Rush Payments</h3><p>Urgency is a common warning sign. Verify independently before paying.</p></div>
+<div class="card"><div class="icon">🛡️</div><h3>Protect Personal Data</h3><p>Don't share OTPs, PINs or sensitive information just because a message asks.</p></div>
+</div>
+</section>
+</main>
+
+<footer>© 2026 SRLYFE • Useful Things. Unexpected Fun.<br><span>Built as a simple public utility project.</span></footer>
+
+<div id="toast" class="toast"></div>
+<script>
+function openTool(id){document.querySelectorAll('.tool').forEach(x=>x.classList.remove('active'));const el=document.getElementById(id);el.classList.add('active');el.scrollIntoView({behavior:'smooth',block:'center'})}
+const wowItems=["🎉 Your brain is doing thousands of tiny predictions every second.","Try the Memory Challenge below. Don't peek twice!","A small habit repeated consistently can become a big number.","Before sharing an OTP, stop. Legitimate services don't need you to reveal it.","You found the secret button. Now explore the tools.","Fun fact: a year has about 52 weeks. Your plans can be measured in weeks too."];
+function wow(){document.getElementById('wowText').textContent=wowItems[Math.floor(Math.random()*wowItems.length)]}
+
+let memAnswer="";
+const symbols=["★","◆","●","▲","☂","♣","♥","☀"];
+function startMemory(){memAnswer=symbols[Math.floor(Math.random()*symbols.length)];const box=document.getElementById('memoryBox');const choices=document.getElementById('memChoices');choices.innerHTML="";box.textContent=memAnswer;document.getElementById('memStatus').textContent="Remember it!";setTimeout(()=>{box.textContent="❓";document.getElementById('memStatus').textContent="Which symbol did you see?";symbols.slice().sort(()=>Math.random()-.5).slice(0,4).forEach(s=>{const b=document.createElement('button');b.className='choice';b.textContent=s;b.onclick=()=>{document.getElementById('memStatus').textContent=s===memAnswer?"🎉 Correct!":"Not quite — try again.";};choices.appendChild(b)})},1800)}
+
+function calcAge(){const v=document.getElementById('dob').value;if(!v)return document.getElementById('ageResult').textContent="Please select your birth date.";const d=new Date(v+"T00:00:00"),n=new Date();if(d>n)return document.getElementById('ageResult').textContent="Birth date cannot be in the future.";let y=n.getFullYear()-d.getFullYear(),m=n.getMonth()-d.getMonth(),day=n.getDate()-d.getDate();if(day<0){m--;day+=new Date(n.getFullYear(),n.getMonth(),0).getDate()}if(m<0){y--;m+=12}document.getElementById('ageResult').textContent=`You are ${y} years, ${m} months and ${day} days old.`}
+function calcSave(){const m=Number(document.getElementById('monthly').value),n=Number(document.getElementById('months').value);if(m<0||n<=0)return document.getElementById('saveResult').textContent="Enter valid values.";const total=m*n;document.getElementById('saveResult').textContent=`Total savings: ₹${total.toLocaleString('en-IN')}`}
+
+function calcPercent(){const p=Number(document.getElementById('pct').value),n=Number(document.getElementById('num').value);document.getElementById('pctResult').textContent=`${p}% of ${n} = ${(p*n/100).toLocaleString('en-IN')}`}
+function dateDiff(){const a=document.getElementById('date1').value,b=document.getElementById('date2').value;if(!a||!b)return document.getElementById('dateResult').textContent="Select both dates.";const d=Math.abs((new Date(b)-new Date(a))/86400000);document.getElementById('dateResult').textContent=`Difference: ${d.toLocaleString('en-IN')} day(s).`}
+let chTimer=null,chScore=0,chEnd=0,chA=0,chB=0;
+function challengeStart(){clearInterval(chTimer);chScore=0;chEnd=Date.now()+60000;document.getElementById('chBtn').textContent="Running...";document.getElementById('chBtn').disabled=true;nextQuestion();chTimer=setInterval(()=>{const left=Math.max(0,Math.ceil((chEnd-Date.now())/1000));document.getElementById('chText').textContent=`Time left: ${left}s`;if(left<=0){clearInterval(chTimer);document.getElementById('chBtn').disabled=false;document.getElementById('chBtn').textContent="Start Again";document.getElementById('chQuestion').textContent="Time's up!";document.getElementById('chScore').textContent=`Final score: ${chScore}`}},250)}
+function nextQuestion(){chA=Math.floor(Math.random()*20)+1;chB=Math.floor(Math.random()*20)+1;document.getElementById('chQuestion').textContent=`${chA} + ${chB} = ?`;document.getElementById('chAnswer').value="";document.getElementById('chAnswer').focus()}
+document.getElementById('chAnswer').addEventListener('keydown',e=>{if(e.key==="Enter"&&chEnd>Date.now()){if(Number(e.target.value)===chA+chB)chScore++;nextQuestion()}})
+function checkScam(){const t=document.getElementById('scamText').value.toLowerCase();if(!t.trim())return document.getElementById('scamResult').textContent="Paste a message first.";const checks=[["urgent","Urgency or pressure"],["immediately","Urgency or pressure"],["otp","Request for an OTP"],["password","Request for a password"],["send money","Payment request"],["pay now","Payment pressure"],["winner","Prize/winner claim"],["click","Link/click pressure"],["verify","Verification pressure"],["bank","Bank-related request"]];const found=[...new Set(checks.filter(x=>t.includes(x[0])).map(x=>x[1]))];document.getElementById('scamResult').innerHTML=found.length?`<span class="warning">⚠️ Warning signs found:</span><br>• ${found.join("<br>• ")}<br><br>Verify through an official channel before taking action.`:`<span class="safe">No obvious keywords detected.</span><br>This does not prove the message is safe. Stay cautious.`}
+
+function lifeNumbers(){const v=document.getElementById('lifeDob').value;if(!v)return document.getElementById('lifeResult').textContent="Select your birth date.";const d=new Date(v+"T00:00:00"),n=new Date();if(d>n)return document.getElementById('lifeResult').textContent="Birth date cannot be in the future.";const days=Math.floor((n-d)/86400000),weeks=Math.floor(days/7),months=Math.floor(days/30.4375);document.getElementById('lifeResult').innerHTML=`Approx. <b>${days.toLocaleString('en-IN')}</b> days<br>Approx. <b>${weeks.toLocaleString('en-IN')}</b> weeks<br>Approx. <b>${months.toLocaleString('en-IN')}</b> months`}
+
+function toggleTheme(){document.body.classList.toggle('theme-light');localStorage.setItem('srTheme',document.body.classList.contains('theme-light')?'light':'dark');showToast(document.body.classList.contains('theme-light')?'Light mode':'Dark mode')}
+if(localStorage.getItem('srTheme')==='light')document.body.classList.add('theme-light');
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTi
